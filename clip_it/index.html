@@ -1,0 +1,350 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight: 300;
+		font-size: 18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+
+	h1 {
+		font-size: 32px;
+		font-weight: 300;
+	}
+
+	.disclaimerbox {
+		background-color: #eee;
+		border: 1px solid #eeeeee;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	a:link,
+	a:visited {
+		color: #1367a7;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #208799;
+	}
+
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+
+	.layered-paper-big {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The top layer shadow */
+			5px 5px 0 0px #fff,
+			/* The second layer */
+			5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The second layer shadow */
+			10px 10px 0 0px #fff,
+			/* The third layer */
+			10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The third layer shadow */
+			15px 15px 0 0px #fff,
+			/* The fourth layer */
+			15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The fourth layer shadow */
+			20px 20px 0 0px #fff,
+			/* The fifth layer */
+			20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The fifth layer shadow */
+			25px 25px 0 0px #fff,
+			/* The fifth layer */
+			25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The top layer shadow */
+			5px 5px 0 0px #fff,
+			/* The second layer */
+			5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The second layer shadow */
+			10px 10px 0 0px #fff,
+			/* The third layer */
+			10px 10px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	hr {
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+
+<head>
+	<title>CLIP-It! Language-Guided Video Summarization</title>
+	<meta property="og:image" content="resources/teaser.png" />
+	<!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="CLIP-It! Language-Guided Video Summarization" />
+	<meta property="og:description"
+		content="We introduce CLIP-It, a multimodal transformer for language-guided video summarization which works on both generic and query-focused video summarization tasks." />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- <script async src=""></script> 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script> -->
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:36px">CLIP-It! Language-Guided Video Summarization</span>
+		<br>
+		<table align=center width=600px>
+			<table align=center width=1100px>
+				<tr>
+					<td align=center width=250px>
+						<span style="font-size:24px"><a href="https://people.eecs.berkeley.edu/~medhini/">Medhini
+								Narasimhan</a></span>&nbsp;&nbsp;&nbsp;
+						<span style="font-size:24px"><a href="https://anna-rohrbach.net/">Anna
+								Rohrbach</a></span>&nbsp;&nbsp;&nbsp;
+						<span style="font-size:24px"><a href="https://people.eecs.berkeley.edu/~trevor/">Trevor
+								Darrell</a></span>&nbsp;&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+			<table align=center width=500px>
+				<tr>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:20px">UC Berkeley</span>
+						</center>
+					</td>				
+				</tr>
+
+			</table>
+			<table align=center width=350px>
+				<tr>
+					<td align=center width=100px> <span style="font-size:15pt">
+							<center>
+								<a href="https://arxiv.org/pdf/2107.00650.pdf">[Paper]</a>
+
+							</center>
+					</td>
+					<td align=center width=100px> <span style="font-size:15pt">
+							<center>
+								<a href="">[Bibtex]</a>
+							</center>
+					</td>
+					<td align=center width=100px> <span style="font-size:15pt">
+							<center><a href='https://github.com/medhini/clip_it'>[GitHub]</a></center>
+					</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+
+	<br>
+	<center>
+		<table align=center width=850px>
+			<tr>
+				<td align=center width=850px>
+					<center>
+						<img class="round" style="width:950px" align="middle" src="resources/teaser.png"/>
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td>
+					We introduce <b>CLIP-It</b>, a <em>language-guided</em> multimodal transformer for generic and query-focused video
+					summarization. The figure shows results from our method. Given a day-long video of a national park tour, the
+					generic summary (top) is a video with relevant and diverse keyframes. When using the query “All the scenes
+					containing restaurants and shopping centers”, the generated query-focused summary includes all the matching
+					scenes. Similarly, the query “All water bodies such as lakes, rivers, and waterfalls”, yields a short summary
+					containing all the water bodies present in the video.
+				</td>
+			</tr>
+		</table>
+	</center>
+
+	<hr>
+	<center>
+	<table align=center width=850px>
+		<center>
+			<h1>Abstract</h1>
+		</center>
+		<tr>
+			<td>
+				A generic video summary is an abridged version of a video that conveys the whole story and features the most important scenes. Yet the importance of scenes in a video is often subjective, and users should have the option of customizing the summary by using natural language to specify what is important to them. Further, existing models for fully automatic generic summarization have not exploited available language models, which can serve as an effective prior for saliency. This work introduces CLIP-It, a single framework for addressing both generic and query-focused video summarization, typically approached separately in the literature. We propose a language-guided multimodal transformer that learns to score frames in a video based on their importance relative to one another and their correlation with a user-defined query (for query-focused summarization) or an automatically generated dense video caption (for generic video summarization). Our model can be extended to the unsupervised setting by training without ground-truth supervision. We outperform baselines and prior work by a significant margin on both standard video summarization datasets (TVSum and SumMe) and a query-focused video summarization dataset (QFVS). Particularly, we achieve large improvements in the transfer setting, attesting to our method's strong generalization capabilities. 
+			</td>
+		</tr>
+	</table>
+	</center>
+	<br>
+
+	<hr>
+	<center>
+	<table align=center width=850px>
+		<center>
+			<h1>Method</h1>
+			<tr>
+				<td align=center width=850px>
+					<center>
+						<img class="round" style="width:850px" align="middle" src="resources/method.png"/>
+					</center>
+				</td>
+			</tr>
+		</center>
+
+		<tr>
+			<td>
+				 <b>Overview of CLIP-It.</b> Given an input video, CLIP-It generates a summary conditioned on either a
+					user-defined natural language query or an automatically generated dense video caption. The Language-Guided
+					Attention head fuses the image and language embeddings, and the Frame-Scoring Transformer jointly attends to
+					all frames to predict their relevance scores. During inference, the video summary is constructed by converting
+					frame scores to shot scores and using Knapsack algorithm to select high scoring shots. 
+			</td>
+		</tr>
+	</table>
+	</center>
+	<br>
+
+	<hr>
+	<table align=center width=850px>
+		<center>
+			<h1>Qualitative Results</h1>
+			<p align="center">
+				<iframe width="760" height="480" src="https://www.youtube.com/embed/u0eaw5W1uu4" frameborder="0"
+					allow="autoplay; encrypted-media" allowfullscreen align="center"></iframe>
+			</p>
+		</center>
+	</table>
+	<br>
+
+	<hr>
+
+	<table align=center width=500 px>
+		<center>
+			<h1>Paper</h1>
+		</center>
+		<tr>
+			<td><a href=""><img class="layered-paper-big" style="height:175px" src="resources/paper.png" /></a></td>
+			<td><span style="font-size:12pt">M. Narasimhan, A. Rohrbach, T. Darrell.</span><br>
+				<b><span style="font-size:12pt">CLIP-It! Language-Guided<br>Video Summarization</b></span><br>
+				<span style="font-size:12pt">Neurips, 2021.</span>
+			</td>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table align=center width=600px>
+		<tr>
+			<td><span style="font-size:14pt">
+					<center>
+						<a href="https://arxiv.org/pdf/2107.00650.pdf">[Paper]</a> |
+						<a href="https://proceedings.neurips.cc/paper/12695-/bibtex">[Bibtex]</a>
+					</center>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<hr>
+
+	<br>
+
+	<table align=center width=900px>
+		<tr>
+			<td width=400px>
+				<left>
+					<center>
+						<h1>Acknowledgements</h1>
+					</center> We thank Arun Mallya for very helpful discussions and
+							feedback. We'd also like to thank Huijuan Xu for feedback on the draft. This work was supported in part by DoD including DARPA’s XAI, LwLL, and SemaFor programs, as well as BAIR’s industrial alliance programs.
+				</left>
+			</td>
+		</tr>
+	</table>
+
+	<table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
+		<tr>
+		  <td>
+			<br>
+			<p align="right">
+			  <font size="2">
+				<a href="https://github.com/richzhang/webpage-template">Template cloned from here!</a>
+			  </font>
+			</p>
+		  </td>
+		</tr>
+	  </table>
+
+
+	<br>
+</body>
+
+</html>
